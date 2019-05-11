@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我是测试页面</title>
+		<link href="__PUBLIC__/admin/css/admin_login.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<volist name="result" id="value">
+			<table>
+				<tr>
+					<td>{$value.user}</td>
+					<td>{$value.password}</td>
+				</tr>
+			</table>
+			<!--{$value.user}</br>-->
+		</volist>
+		
+		<div class="admin_login_wrap">
+		    <div class="adming_login_border">
+		        <div class="admin_input">
+		            <form action="{:U('Admin/temp/temp_ok')}" method="post">
+		                <ul class="admin_items">
+		                    <li>
+		                        <label for="user">用户名</label>
+		                        <input type="text" name="username" value="{$user}" id="user" size="40" class="admin_input_style" placeholder="请输入用户名"/>
+		                    </li>
+		                    <li>
+		                        <label for="pwd">密码</label>
+		                        <input type="password" name="password" value="{$password}" id="pwd" size="40" class="admin_input_style" placeholder="请输入密码" />
+		                    </li>
+		                    <li>
+		                    	<input type="checkbox" value="thepwd" name="remeber" />
+		                    	<span>&nbsp;&nbsp;&nbsp;记住密码</span>
+		                    </li>
+		                    <li>
+		                        <label for="user">用户名</label>
+		                        <input type="text" name="username" value="{$arr_admin.user}" id="user" size="40" class="admin_input_style" placeholder="请输入用户名"/>
+		                    </li>
+		                    <li>
+		                        <label for="user">用户名</label>
+		                        <input type="text" name="username" value="{$arr_admin.password}" id="user" size="40" class="admin_input_style" placeholder="请输入用户名"/>
+		                    </li>
+		                    <li>
+		                        <input type="submit" tabindex="3" value="登陆" class="btn btn-primary" />
+		                        <a href="{:U('Admin/Login/register')}">注册</a>
+		                    </li>
+		                   </ul>
+		                </form>
+		        </div>
+		    </div>
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+	<legend>删除学生</legend>
+</fieldset>
+<div class="layui-row">
+	<div class="layui-col-md1">
+		<div class="grid-demo grid-demo-bg1">&nbsp;</div>
+	</div>
+	<div class="layui-col-md1">
+		<div class="grid-demo grid-demo-bg1">&nbsp;</div>
+	</div>
+
+	<div class="layui-col-md4">
+		<div class="grid-demo grid-demo-bg1">
+			<form action="{:U('admin/student/studentdelete')}" method="post">
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="text" name="inform" placeholder="用户名、ID、邮箱" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="submit" name="" value="查找" class="layui-btn layui-btn-primary" />
+					</div>
+				</div>
+			</form>
+
+			<table class="layui-table" lay-even="" lay-skin="row" align="right">
+				<colgroup>
+					<col width="300">
+					<col width="300">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>标签</th>
+						<th>信息</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="data" id="value" key="k">
+						<tr>
+							<td>编号</td>
+							<td>{$value.userinfo}</td>
+						</tr>
+						<tr>
+							<td>用户名</td>
+							<td>{$value.user-username}</td>
+						</tr>
+						<tr>
+							<td>电子邮箱</td>
+							<td>{$value.user-email}</td>
+						</tr>
+						<tr>
+							<td>账号状态</td>
+							<td>{$value.user_locked}</td>
+						</tr>
+						<tr>
+							<td>登录次数</td>
+							<td>{$value.user_loginnumber}</td>
+						</tr>
+						<tr>
+							<td>上次登录IP</td>
+							<td>{$value.user_nextlogintime}</td>
+						</tr>
+
+						<tr>
+							<td>
+								<a href="{:U('admin/student/delete_ok')}?delete=ok&table=s&id={$value.userinfo}" class="layui-btn layui-btn-primary" onclick="return confirm('确认删除吗！！！')">确认删除</a>
+							</td>
+							<td>
+								<a href="{:U('admin/student/student')}?v=所有学生&page=1" target="mainFrame" class="layui-btn layui-btn-normal">取消</a>
+							</td>
+						</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet " type="text/css " href="__PUBLIC__/admin/layui/css/layui.css " media="all " />
+<script src="__PUBLIC__/admin/layui/layui.js "></script>

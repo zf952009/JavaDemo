@@ -1,0 +1,87 @@
+<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+	<legend>{$title}</legend>
+</fieldset>
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 30px;">
+	<a href="{:U('admin/course/course')}?v={$title}&pageUP={$pageUP}" class="layui-btn layui-btn-sm layui-btn-normal {$disabledUP}">上一页</a>
+	<a href="{:U('admin/course/course')}?v={$title}&pageNext={$pageNext}" class="layui-btn layui-btn-sm layui-btn-normal {$disabledNext}">下一页</a>
+	<a href="{:U('admin/course/updatecourse')}" class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">新增</a>
+	<a href="{:U('admin/course/courseselect')}" class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">查询</a>
+	<a href="{:U('admin/course/coursedelete')} " class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">删除课程</a>
+	<ul class="layui-tab-title">
+		<li>
+			<a href="{:U('admin/course/course')}?&v=所有课程&page=1">所有课程</a>
+		</li>
+		<!--
+        	显示所有的课程
+        -->
+		<volist name="value" id="v" key="k">
+			<li>
+				<a href="{:U('admin/course/course')}?list2id={$v.list2id}&v={$v.list2name}&page=1">{$v.list2name}</a>
+			</li>
+		</volist>
+	</ul>
+	<div class="layui-tab-content" style="height: 100px;">
+		<div class="layui-tab-item layui-show">
+			<table class="layui-table" lay-even="" lay-skin="row">
+				<colgroup>
+					<col width="100">
+					<col width="100">
+					<col width="150">
+					<col width="150">
+					<col width="150">
+					<col width="150">
+					<col width="100">
+					<col width="100">
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>课程编号</th>
+						<th>课程名</th>
+						<th>授课教师</th>
+						<th>授课类型</th>
+						<th>课程简介</th>
+						<th>课程小节</th>
+						<th>课程路径</th>
+						<th>其他</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<div class="layui-tab-item">
+						<volist name="data" id="value">
+							<tr>
+								<td>{$value.course_id}</td>
+								<td>{$value.course_name}</td>
+								<td>{$value.course_teachar}</td>
+								<td>{$value.list2name}</td>
+								<td>{$value.course_summary}</td>
+								<td>{$value.course_section_name}</td>
+								<td>{$value.course_path}</td>
+								<td>{$value.course_other}</td>
+								<td>
+									<a href="{:U('admin/course/courseDetails')}?courseid={$value.course_id}&list2id={$value.list2id}&teacharid={$value.course_teachar}&list1id={$value.list1id}" class="layui-btn" target="mainFrame">详情/修改</a>
+								</td>
+							</tr>
+						</volist>
+					</div>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/layui/css/layui.css" media="all" />
+<script src="__PUBLIC__/admin/layui/layui.js"></script>
+<script type="text/javascript">
+	layui.use('element', function() {
+		var $ = layui.jquery,
+			element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+		$('.site-demo-active').on('click', function() {
+			var othis = $(this),
+				type = othis.data('type');
+			active[type] ? active[type].call(this, othis) : '';
+		});
+	});
+</script>

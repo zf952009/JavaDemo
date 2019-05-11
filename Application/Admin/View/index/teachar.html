@@ -1,0 +1,89 @@
+<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+    <legend>{$title}</legend>
+</fieldset>
+
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 30px;">
+    <a href="{:U('admin/teachar/teachar')}?title={$title}&pageUP={$pageUP}"
+       class="layui-btn layui-btn-sm layui-btn-normal {$disabledUP}">上一页</a>
+    <a href="{:U('admin/teachar/teachar')}?title={$title}&pageNext={$pageNext}"
+       class="layui-btn layui-btn-sm layui-btn-normal {$disabledNext}">下一页</a>
+    <a href="{:U('admin/teachar/teacharadd')}" class="layui-btn layui-btn-sm layui-btn-normal target=" mainFrame">新增</a>
+    <a href="{:U('admin/teachar/teacharselect')}" class="layui-btn layui-btn-sm layui-btn-normal target="
+       mainFrame">查询</a>
+    <a href="{:U('admin/teachar/teachardelete')} " class="layui-btn layui-btn-sm layui-btn-normal target=" mainFrame">删除用户</a>
+
+    <ul class="layui-tab-title">
+        <li class="">
+            <a href="{:U( 'admin/index/teachar')}?title=所有教师&page=1&course2_id=0">所有教师</a>
+        </li>
+        <!--
+            显示所有的课程
+        -->
+        <volist name="navs2 " id="value">
+            <li>
+                <a href="{:U( 'admin/index/teachar')}?title={$value.nav2_name}&page=1&course2_id={$value.id}">{$value.nav2_name}</a>
+            </li>
+        </volist>
+    </ul>
+    <div class="layui-tab-content " style="height: 100px; ">
+        <div class="layui-tab-item layui-show ">
+            <table class="layui-table " lay-even=" " lay-skin="row ">
+                <colgroup>
+                    <col width="100 ">
+                    <col width="100 ">
+                    <col width="150 ">
+                    <col width="150 ">
+                    <col width="150 ">
+                    <col width="150 ">
+                    <col width="100 ">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>用户名</th>
+                    <th>电子邮箱</th>
+                    <th>授课类型</th>
+                    <th>教授课程</th>
+                    <th>是否为管理员</th>
+                    <th>是否禁用</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <div class="layui-tab-item ">
+                    <volist name="data " id="value ">
+                        <tr>
+                            <td>{$value.teachingid}</td>
+                            <td>{$value.teachingname}</td>
+                            <td>{$value.teachingemail}</td>
+                            <td>{$value.teachingtype}</td>
+                            <td>{$value.teachingcourses}</td>
+                            <td>{$value.teachingisadmin}</td>
+                            <td>{$value.techinglocked}</td>
+                            <td>
+                                <a href="{:U( 'admin/teachar/teacharDetails')}?TeachingID={$value.teachingid}"
+                                   class="layui-btn " target="mainFrame">详情/修改</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet " type="text/css " href="__PUBLIC__/admin/layui/css/layui.css " media="all "/>
+<script src="__PUBLIC__/admin/layui/layui.js "></script>
+<script type="text/javascript ">
+    layui.use('element', function () {
+        var $ = layui.jquery,
+            element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        $('.site-demo-active').on('click', function () {
+            var othis = $(this),
+                type = othis.data('type');
+            active[type] ? active[type].call(this, othis) : '';
+        });
+    });
+</script>

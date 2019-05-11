@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>所有课程

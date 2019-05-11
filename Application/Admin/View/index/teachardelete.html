@@ -1,0 +1,86 @@
+<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+	<legend>删除教师</legend>
+</fieldset>
+<div class="layui-row">
+	<div class="layui-col-md1">
+		<div class="grid-demo grid-demo-bg1">&nbsp;</div>
+	</div>
+	<div class="layui-col-md1">
+		<div class="grid-demo grid-demo-bg1">&nbsp;</div>
+	</div>
+
+	<div class="layui-col-md4">
+		<div class="grid-demo grid-demo-bg1">
+			<form action="{:U('admin/teachar/teachardelete')}" method="post">
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="text" name="inform" placeholder="用户名、ID、邮箱" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<div class="layui-input-inline">
+						<input type="hidden" name="m" value="t" />
+						<input type="submit" name="" value="查找" class="layui-btn layui-btn-primary" />
+					</div>
+				</div>
+			</form>
+
+			<table class="layui-table" lay-even="" lay-skin="row" align="right">
+				<colgroup>
+					<col width="300">
+					<col width="300">
+				</colgroup>
+				<thead>
+					<tr>
+						<th>标签</th>
+						<th>信息</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="data" id="value" key="k">
+						<tr>
+							<td>编号</td>
+							<td>{$value.teachingid}</td>
+						</tr>
+						<tr>
+							<td>用户名</td>
+							<td>{$value.teachingname}</td>
+						</tr>
+						<tr>
+							<td>电子邮箱</td>
+							<td>{$value.teachingemail}</td>
+						</tr>
+						<tr>
+							<td>是否为管理员</td>
+							<td>{$value.teachingisadmin}</td>
+						</tr>
+						<tr>
+							<td>账号状态</td>
+							<td>{$value.techinglocked}</td>
+						</tr>
+						<tr>
+							<td>授课类型</td>
+							<td>{$value.teachingtype}</td>
+						</tr>
+						<tr>
+							<td>课程名</td>
+							<td>{$value.teachingcourses}</td>
+						</tr>
+
+						<tr>
+							<td>
+								<a href="{:U('admin/teachar/delete_ok')}?delete=ok&table=t&id={$value.teachingid}" class="layui-btn layui-btn-primary" onclick="return confirm('确认删除吗！！！')">确认删除</a>
+							</td>
+							<td>
+								<a href="{:U('admin/teachar/teachar')}?v=所有教师&page=1" target="mainFrame" class="layui-btn layui-btn-normal">取消</a>
+							</td>
+						</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet " type="text/css " href="__PUBLIC__/admin/layui/css/layui.css " media="all " />
+<script src="__PUBLIC__/admin/layui/layui.js "></script>

@@ -1,0 +1,39 @@
+<div class="layui-row">
+	<div class="layui-col-md1">
+		<div class="grid-demo grid-demo-bg1">&nbsp;</div>
+	</div>
+	<div class="layui-col-xs6 layui-col-sm6 layui-col-md4">
+		<div class="grid-demo grid-demo-bg1">
+			<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+				<legend>所有课程</legend>
+			</fieldset>
+			<table class="layui-table" lay-even="" lay-skin="row">
+				<colgroup>
+					<col width="180">
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>课程名</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<volist name="data" id="value">
+					<tbody>
+						<tr>
+							<td>{$value.course_name}</td>
+							<td>
+								<a href="{:U('admin/index/courseDetails')}?course_id={$value.course}" class="layui-btn" target="mainFrame">查看</a>
+
+							</td>
+						</tr>
+					</tbody>
+				</volist>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/layui/css/layui.css" media="all" />
+<script src="__PUBLIC__/admin/layui/layui.js"></script>

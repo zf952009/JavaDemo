@@ -1,0 +1,81 @@
+<fieldset class="layui-elem-field layui-field-title" style="margin: 30px;">
+	<legend>{$title}</legend>
+</fieldset>
+
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief" style="margin: 30px;">
+	<a href="{:U('admin/student/student')}?v={$title}&pageUP={$pageUP}" class="layui-btn layui-btn-sm layui-btn-normal {$disabledUP}">上一页</a>
+	<a href="{:U('admin/student/student')}?v={$title}&pageNext={$pageNext}" class="layui-btn layui-btn-sm layui-btn-normal {$disabledNext}">下一页</a>
+	<a href="{:U('admin/student/studentadd')}" class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">新增</a>
+	<a href="{:U('admin/student/studentselect')}" class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">查询</a>
+	<a href="{:U('admin/student/studentdelete')} " class="layui-btn layui-btn-sm layui-btn-normal target="mainFrame">删除用户</a>
+	<ul class="layui-tab-title">
+		<li>
+			<a href="{:U('admin/student/student')}?v=所有学生&page=1">所有学生</a>
+		</li>
+		<!--
+        	显示所有的课程
+        -->
+		<volist name="value" id="v" key="k">
+			<li>
+				<a href="{:U('admin/student/student')}?v={$v.$k}&page=1">{$v.$k}</a>
+			</li>
+		</volist>
+	</ul>
+	<div class="layui-tab-content" style="height: 100px;">
+		<div class="layui-tab-item layui-show">
+			<table class="layui-table" lay-even="" lay-skin="row">
+				<colgroup>
+					<col width="100">
+					<col width="100">
+					<col width="150">
+					<col width="150">
+					<col width="150">
+					<col width="150">
+					<col width="100">
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>用户名</th>
+						<th>电子邮箱</th>
+						<th>上次登录IP</th>
+						<th>上次登录时间</th>
+						<th>登录次数</th>
+						<th>是否禁用</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<volist name="data" id="value">
+						<tr>
+							<td>{$value.userinfo}</td>
+							<td>{$value.user-username}</td>
+							<td>{$value.user-email}</td>
+							<td>{$value.user_nextloginip}</td>
+							<td>{$value.user_nextlogintime}</td>
+							<td>{$value.user_loginnumber}</td>
+							<td>{$value.user_locked}</td>
+							<td>
+								<a href="{:U('admin/student/studentDetails')}?id={$value.userinfo}" class="layui-btn" target="mainFrame">详情/修改</a>
+							</td>
+						</tr>
+					</volist>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/layui/css/layui.css" media="all" />
+<script src="__PUBLIC__/admin/layui/layui.js"></script>
+<script type="text/javascript">
+	layui.use('element', function() {
+		var $ = layui.jquery,
+			element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+		$('.site-demo-active').on('click', function() {
+			var othis = $(this),
+				type = othis.data('type');
+			active[type] ? active[type].call(this, othis) : '';
+		});
+	});
+</script>
